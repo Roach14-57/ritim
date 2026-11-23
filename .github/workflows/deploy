@@ -33,8 +33,13 @@ jobs:
       - name: Paketleri yükle
         run: npm ci
 
-      - name: Siteyi derle
-        run: npm run build
+        - name: Siteyi derle
+          run: npm run build
+          env:
+            VITE_SPOTIFY_CLIENT_ID: ${{ vars.VITE_SPOTIFY_CLIENT_ID }}
+            VITE_SPOTIFY_REDIRECT_URI: ${{ vars.VITE_SPOTIFY_REDIRECT_URI }}
+            VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+            VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
 
       - name: Pages'i hazırla
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
